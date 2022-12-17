@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do app</title>
+</head>
+<style>
+    .container {
+        margin: 70px auto;
+        border-radius: 10px;
+        background-color: greenyellow;
+        width: 50%;
+        height: 100vh;
+    }
+
+    .childbox {
+        margin: 50px 0 0 0;
+        width: 100%;
+        background-color: grey;
+        height: 25vh;
+        border-radius: 10px;
+
+
+
+
+    }
+
+    input {
+        margin-top: 30px;
+        width:100%;
+        padding: 20px 10px 20px 0;
+        background-color: azure;
+        border: 2px solid greenyellow;
+        color: rgb(145, 208, 51);
+        text-transform: capitalize;
+        outline: none;
+
+    }
+
+    p {
+        color: greenyellow;
+        text-align: center;
+        margin-top: 40px;
+        padding: 12px;
+        font-weight: bolder;
+    }
+
+    .submit {
+        background-color: greenyellow;
+        border: transparent;
+        /* box-sizing: border-box; */
+        color: white;
+        /* justify-content: flex-end; */
+        height: 70px;
+        margin-top: 30px;
+    }
+
+    #result {
+        background-color:wheat;
+        height: fit-content;
+        border-radius: 4px;
+        margin-top: 20px;
+        display: flex;
+        border: 2px solid white;
+        display: flex;
+        justify-content: space-between;
+       
+    
+
+
+
+    }
+
+    #delete {
+        padding: 12px;
+        background-color: rgb(237, 35, 35);
+        border: transparent;
+        color: white;
+        border-radius: 7px;
+        border: 2px ridge white;
+
+        
+
+    }
+    a{
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+
+    }
+    #inputbox{
+        display: flex;
+        flex-direction:row;
+        /* border: 3px solid red; */
+
+    
+
+
+
+    }
+   
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="childbox">
+            <p> ADD ITEM</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div id="inputbox">
+            <input type="text" id="todo-text" placeholder="Create-New-List" name="text">
+            <button class="submit" type="submit"> Submit </button>
+        </div>
+            </form>
+             </div>
+        {% for note in notes reversed %}
+        <div id="result">
+            <span class="notetext" style="color:green;font-size: medium;font-weight: bolder;text-transform: capitalize; word-wrap: break-word;
+           word-break: break-all;">{{note.text}}</span> 
+
+           <buttton id="delete"><a href="{{note.id}}/delete/">Delete</a></buttton>
+        </div>
+        {% endfor %}
+
+<!-- 
+        {% for message in messages %}
+         <p style="color:red">{{message}}</p>
+        {% endfor %} -->
+
+    </div>
+</body>
+</html>
