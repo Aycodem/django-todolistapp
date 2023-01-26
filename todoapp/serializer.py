@@ -5,3 +5,11 @@ class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model=Note
         fields ='__all__'
+
+class NoteEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Note
+        fields=[
+            'id',
+            'text'
+        ]
